@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Person Component Example</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+    <script>
+      function Person() {
+        const [firstName, setFirstName] = React.useState('');
+        const [lastName, setLastName] = React.useState('');
+
+        const handleFirstNameChange = (event) => {
+          setFirstName(event.target.value);
+        };
+
+        const handleLastNameChange = (event) => {
+          setLastName(event.target.value);
+        };
+
+        const fullName = `${firstName} ${lastName}`;
+
+        return (
+          <div>
+            <label htmlFor="firstName">First Name:</label>
+            <input type="text" id="firstName" value={firstName} onChange={handleFirstNameChange} />
+
+            <label htmlFor="lastName">Last Name:</label>
+            <input type="text" id="lastName" value={lastName} onChange={handleLastNameChange} />
+
+            <h1>{fullName}</h1>
+          </div>
+        );
+      }
+
+      ReactDOM.render(<Person />, document.getElementById('root'));
+    </script>
+  </body>
+</html>
